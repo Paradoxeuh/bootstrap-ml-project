@@ -1,0 +1,37 @@
+{
+  "name": "vscode",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "runArgs": [
+    "--volume=${localWorkspaceFolder}:/home/vscode/app/:Z",
+    "--volume=bootstrap-ml-project_venv:${containerWorkspaceFolder}/.venv:Z"
+  ],
+  "workspaceMount": "",
+  "workspaceFolder": "/home/vscode/app/",
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.languageServer": "Pylance",
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.rulers": [
+      88
+    ],
+    "python.testing.pytestArgs": [
+      "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vsliveshare.vsliveshare",
+    "eamodio.gitlens"
+  ]
+}
