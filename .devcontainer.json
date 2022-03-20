@@ -4,12 +4,13 @@
     "dockerfile": "Dockerfile"
   },
   "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "workspaceFolder": "/home/vscode/app/",
   "runArgs": [
+    "--userns=keep-id",
     "--volume=${localWorkspaceFolder}:/home/vscode/app/:Z",
     "--volume=bootstrap-ml-project_venv:${containerWorkspaceFolder}/.venv:Z"
   ],
-  "workspaceMount": "",
-  "workspaceFolder": "/home/vscode/app/",
   "settings": {
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "python.languageServer": "Pylance",
@@ -26,7 +27,8 @@
       "tests"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "terminal.integrated.defaultProfile.linux": "bash"
   },
   "extensions": [
     "ms-python.python",
